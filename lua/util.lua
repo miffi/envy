@@ -13,6 +13,7 @@ function M.set_options(tbl)
 end
 
 -- nabbed from https://github.com/L3MON4D3/Luasnip/issues/1#issuecomment-835241958
+-- Loads a library if it exists.
 function M.prequire(...)
   local status, lib = pcall(require, ...)
   if status then

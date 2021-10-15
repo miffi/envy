@@ -129,8 +129,6 @@ return require('packer').startup(function()
     end,
   }
 
-  -- lean
-
   -- filetype/syntax
   use 'neovimhaskell/haskell-vim'
   use 'derekelkins/agda-vim'
@@ -171,7 +169,7 @@ return require('packer').startup(function()
   }
   use {
     'lewis6991/gitsigns.nvim',
-    disable = true,
+    disable = true, -- disabled for now
     requires = 'nvim-lua/plenary.nvim',
     config = function()
       require('gitsigns').setup()

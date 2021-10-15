@@ -27,7 +27,7 @@ util.set_options {
   -- don't fold by default
   foldenable = false,
 
-  -- tab options
+  -- indenting options
   tabstop = 2,
   shiftwidth = 2,
   softtabstop = 2,
@@ -48,6 +48,11 @@ util.set_options {
   fcs = 'eob: ',
 }
 
+-- These variables stop some default plugins for loading plugins concerned with
+-- archives, netrw and matching parentheses remove the lines to load the
+-- plugins normally.
+--
+-- There are more default plugins, dunno the exact vars to disable them.
 util.set_vars {
   loaded_gzip = 1,
   loaded_tar = 1,
