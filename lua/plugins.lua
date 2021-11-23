@@ -111,10 +111,10 @@ return require('packer').startup(function()
   -- use 'editorconfig/editorconfig-vim'
 
   -- lisp
-  use {
-    'eraserhd/parinfer-rust',
-    run = 'cargo build --release',
-  }
+  -- use {
+  --   'eraserhd/parinfer-rust',
+  --   run = 'cargo build --release',
+  -- }
 
   -- latex
   use {
