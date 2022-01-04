@@ -1,35 +1,43 @@
-local vimp = require 'vimp'
-local util = require 'util'
-
 vim.g.mapleader = ' '
 vim.g.localleader = '-'
 
--- I never really found a good key for localleader
-vimp.nmap('<leader>;', '<localleader>')
+require('nest').applyKeymaps {
+  { '<leader>', {
+    { 'w', '<cmd>up<cr>' },
 
-vimp.nnoremap('J', 'mzJ`z')
+    -- Windowing binds made better
+    { 'h', '<c-w>h' },
+    { 'j', '<c-w>j' },
+    { 'k', '<c-w>k' },
+    { 'l', '<c-w>l' },
 
-vimp.nnoremap('Q', 'q:')
+    { 'H', '<c-w>H' },
+    { 'J', '<c-w>J' },
+    { 'K', '<c-w>K' },
+    { 'L', '<c-w>L' },
 
--- D = d$ and C = c$ ... but Y = yy ?!
--- This is default in master now
--- vimp.nnoremap('Y', 'y$')
+    { options = { noremap = false }, {
+      -- I never really found a good key for localleader
+      { ';', '<localleader>' },
 
--- Convenience functions
-vimp.nnoremap('<leader>w', [[:up<cr>]])
+      -- Separated global clipboard
+      { mode = 'nv', {
+        {'y', '"+y'},
+        {'d', '"+d'},
+        {'p', '"+p'},
+        {'P', '"+P'},
+      }},
+    }},
+  }},
 
--- Control backspace is pretty good
-vimp.bind('ic', '', '<c-w>')
+  { 'Q', 'q:' },
 
--- Make searching not nauseating
-util.formatbind('n', '%s', '%szzzv', { 'n', 'N' })
+  -- Make some binds not nauseating
+  { 'J', 'mzJ`z' },
 
--- Some convenient brace expanding commands
--- <c-c> leaves insert mode without trigerring InsertLeave
-util.formatbind('i', ';%sb', '{<cr>}%s<c-c>O', { '', ',', ';' })
+  { 'n' , 'nzzzv' },
+  { 'N' , 'Nzzzv' },
 
--- Easy to reach seperated system clipboard
-util.formatbind('nv', '<leader>%s', '"+%s', { 'y', 'd', 'p', 'P' })
-
--- Default bindings for window manipulation are pretty bad ngl
-util.formatbind('n', '<leader>%s', '<c-w>%s', { 'h', 'j', 'k', 'l', 'H', 'J', 'K', 'L' })
+  -- Control backspace is pretty good
+  { '' , '<c-w>', mode = 'ic' },
+}

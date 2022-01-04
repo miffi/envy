@@ -1,4 +1,5 @@
 local util = require 'util'
+
 util.set_options {
   foldmethod = 'marker',
   shortmess = vim.o.shortmess .. 'I',
