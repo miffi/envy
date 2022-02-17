@@ -17,7 +17,8 @@ require('nest').applyKeymaps {
     { 'L', '<c-w>L' },
 
     { options = { noremap = false }, {
-      -- I never really found a good key for localleader
+      -- I never really found a good key for localleader, so localleader is
+      -- <leader>;
       { ';', '<localleader>' },
 
       -- Separated global clipboard

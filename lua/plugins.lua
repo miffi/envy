@@ -2,6 +2,8 @@ return require('packer').startup(function()
   -- let packer maintain itself
   use 'wbthomason/packer.nvim'
 
+  use 'dstein64/vim-startuptime'
+
   -- keybind management plugin
   use 'lionC/nest.nvim'
 
@@ -14,12 +16,59 @@ return require('packer').startup(function()
     'tpope/vim-unimpaired',
     keys = { '[', ']', 'yo' },
   }
+  use {
+    'windwp/nvim-autopairs',
+    config = function()
+      require('nvim-autopairs').setup{}
+    end,
+  }
 
   -- lsp
   use {
     'neovim/nvim-lspconfig',
     config = function()
       require 'plug/lsp'
+    end,
+    requires = {
+      {
+        'jose-elias-alvarez/null-ls.nvim', module = 'null-ls',
+        requires = { 'nvim-lua/plenary.nvim', module_pattern = 'plenary.*' },
+      },
+    },
+  }
+
+
+  -- completion
+  use {
+    'hrsh7th/nvim-cmp',
+    requires = {
+      'hrsh7th/cmp-nvim-lsp',
+
+      'saadparwaiz1/cmp_luasnip',
+    },
+    config = function()
+      require'plug/cmp'
+    end,
+  }
+
+  use {
+    'L3MON4D3/LuaSnip',
+    config = function()
+      require'plug/luasnip'
+    end,
+  }
+
+  -- telescope
+  use {
+    'nvim-telescope/telescope.nvim',
+    requires = {
+      {'nvim-lua/plenary.nvim', module_pattern = 'plenary.*'},
+      {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'},
+    },
+    module = 'telescope',
+    config = function()
+      require('telescope').setup {}
+      require('telescope').load_extension('fzf')
     end,
   }
 
@@ -31,8 +80,7 @@ return require('packer').startup(function()
       require 'plug/treesitter'
     end,
     requires = {
-      'nvim-treesitter/playground',
-      cmd = 'TSPlaygroundToggle',
+      { 'nvim-treesitter/playground' },
     },
   }
 
@@ -58,10 +106,10 @@ return require('packer').startup(function()
   -- colorscheme
   use {
     '~/prog/apropospriate.nvim',
-    requires={'rktjmp/lush.nvim'},
+    requires = { 'rktjmp/lush.nvim' },
     config = function()
-      vim.cmd[[colorscheme apropospriate]]
-    end
+      vim.cmd [[colorscheme apropospriate]]
+    end,
   }
 
   -- filetype/syntax

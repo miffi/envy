@@ -7,7 +7,7 @@ require('nvim-treesitter.configs').setup {
     enable = true, -- false will disable the whole extension
   },
   indent = {
-    enable = false,
+    enable = true,
   },
   playground = {
     enable = true,

@@ -43,4 +43,15 @@ function M.formatbind(modes, left, right, vals, remap)
   end
 end
 
+-- Nabbed from https://stackoverflow.com/a/37040415
+--
+-- This is useful for finding the sytax group under the cursor, and any group
+-- it's linked with. This does not work on treesitter highlights. Use
+-- :TSHighlightCapturesUnderCursor from https://github.com/nvim-treesitter/playground in that case
+function M.syntax_group()
+  local s = vim.fn.synID(vim.fn.line('.'), vim.fn.col('.'), 1)
+  print(vim.inspect(s))
+  return print(vim.fn.synIDattr(s, 'name') .. ' -> ' .. vim.fn.synIDattr(vim.fn.synIDtrans(s), 'name'))
+end
+
 return M
