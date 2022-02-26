@@ -3,6 +3,7 @@ vim.g.localleader = '-'
 
 require('nest').applyKeymaps {
   { '<leader>', {
+    { '<leader>', '<cmd>b#<cr>' },
     { 'w', '<cmd>up<cr>' },
 
     -- Windowing binds made better
@@ -31,11 +32,13 @@ require('nest').applyKeymaps {
     }},
   }},
 
+  -- Turn the ex mode bind to something mildly useful
   { 'Q', 'q:' },
 
-  -- Make some binds not nauseating
+  -- I don't like how join moves the cursor.
   { 'J', 'mzJ`z' },
 
+  -- center search results
   { 'n' , 'nzzzv' },
   { 'N' , 'Nzzzv' },
 

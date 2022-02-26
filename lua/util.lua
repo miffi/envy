@@ -22,7 +22,9 @@ function M.prequire(...)
   return nil
 end
 
-function M.formatbind(modes, left, right, vals, remap)
+-- Some experiment at making a generalised mapping system.
+-- This is now defunct as I use nest.nvim now.
+--[[ function M.formatbind(modes, left, right, vals, remap)
   local bind
   if remap then
     bind = require('vimp').rbind
@@ -41,13 +43,13 @@ function M.formatbind(modes, left, right, vals, remap)
     end
     bind(modes, _left, _right)
   end
-end
+end ]]
 
 -- Nabbed from https://stackoverflow.com/a/37040415
 --
 -- This is useful for finding the sytax group under the cursor, and any group
--- it's linked with. This does not work on treesitter highlights. Use
--- :TSHighlightCapturesUnderCursor from https://github.com/nvim-treesitter/playground in that case
+-- it's linked with. It does not work on treesitter highlights though. Use
+-- :TSHighlightCapturesUnderCursor from https://github.com/nvim-treesitter/playground for that.
 function M.syntax_group()
   local s = vim.fn.synID(vim.fn.line('.'), vim.fn.col('.'), 1)
   print(vim.inspect(s))
