@@ -1,11 +1,16 @@
 return require('packer').startup(function()
   -- let packer maintain itself
-  use 'wbthomason/packer.nvim'
+  use { 'wbthomason/packer.nvim' }
 
   -- movement/quality of life
   use {
     -- comment/uncomment stuff
     'b3nj5m1n/kommentary',
+    config = function()
+      require('kommentary.config').configure_language('c', {
+        prefer_single_line_comments = true,
+      })
+    end,
     keys = 'gc',
   }
   use {
@@ -13,15 +18,6 @@ return require('packer').startup(function()
     'tpope/vim-unimpaired',
     keys = { '[', ']', 'yo' },
   }
-  --[[ use {
-    -- automatically pair braces, parens, etc.
-    'windwp/nvim-autopairs',
-    config = function()
-      require('nvim-autopairs').setup{
-        disable_filetype = { "lisp", "scheme", "clojure" },
-      }
-    end,
-  } ]]
 
   use {
     -- configuration for the built-in lsp
@@ -29,15 +25,6 @@ return require('packer').startup(function()
     config = function()
       require 'conf/lsp'
     end,
-    requires = {
-      {
-        -- null-ls is an ad-hoc way to hook non-lsp processes onto nvim's
-        -- lsp system
-        'jose-elias-alvarez/null-ls.nvim', module = 'null-ls',
-        requires = { 'nvim-lua/plenary.nvim', module_pattern = 'plenary.*' },
-      },
-      'https://github.com/jubnzv/virtual-types.nvim'
-    },
   }
 
   use {
@@ -52,7 +39,7 @@ return require('packer').startup(function()
       'saadparwaiz1/cmp_luasnip',
     },
     config = function()
-      require'conf/cmp'
+      require 'conf/cmp'
     end,
   }
   use {
@@ -61,20 +48,20 @@ return require('packer').startup(function()
   }
 
   -- telescope
-  use {
+  --[[ use {
     -- lua native fuzzy finder
     'nvim-telescope/telescope.nvim',
     requires = {
-      {'nvim-lua/plenary.nvim', module_pattern = 'plenary.*'},
+      { 'nvim-lua/plenary.nvim', module_pattern = 'plenary.*' },
       -- implementation of the fzf algorithm in lua
-      {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'},
+      { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
     },
     module = 'telescope',
     config = function()
       require('telescope').setup {}
-      require('telescope').load_extension('fzf')
+      require('telescope').load_extension 'fzf'
     end,
-  }
+  } ]]
 
   -- treesitter
   use {
@@ -86,7 +73,7 @@ return require('packer').startup(function()
     requires = {
       -- some convenience functionality for treesitter
       { 'nvim-treesitter/playground' },
-      { 'nvim-treesitter/nvim-treesitter-textobjects' }
+      { 'nvim-treesitter/nvim-treesitter-textobjects' },
     },
   }
 
@@ -111,26 +98,37 @@ return require('packer').startup(function()
   }
 
   -- colorscheme
-  use {
+  --[[ use {
     -- a port of the emacs colorscheme I like
     -- repo is at https://github.com/miffi/apropospriate.nvim
-    '~/prog/apropospriate.nvim',
+    'miffi/apropospriate.nvim',
     requires = { 'rktjmp/lush.nvim' },
+  } ]]
+
+  use {
+    '~/prog/apropospriate.nvim',
     config = function()
       vim.cmd [[colorscheme apropospriate]]
     end,
   }
 
+  -- use {
+  -- 'morhetz/gruvbox',
+  -- config = function()
+  -- vim.cmd[[colorscheme gruvbox]]
+  -- end,
+  -- }
+
   -- filetype/syntax
-  use 'neovimhaskell/haskell-vim'
-  use 'derekelkins/agda-vim'
-  use 'kmonad/kmonad-vim'
+  -- use 'neovimhaskell/haskell-vim'
+  -- use 'derekelkins/agda-vim'
+  -- use 'kmonad/kmonad-vim'
 
   --
   -- miscellaneous
   --
   -- measuring startup time
-  use 'dstein64/vim-startuptime'
+  use { 'dstein64/vim-startuptime' }
 
   --[[ use {
     -- streamlining coding competitions
@@ -139,5 +137,10 @@ return require('packer').startup(function()
     config = function() require'competitest'.setup() end
   } ]]
 
-  use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
+  use {
+    'TimUntersberger/neogit',
+    module = 'neogit',
+    cmd = 'Neogit',
+    requires = { 'nvim-lua/plenary.nvim', module_pattern = 'plenary.*' },
+  }
 end)

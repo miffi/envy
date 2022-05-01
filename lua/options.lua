@@ -67,15 +67,17 @@ util.set_vars {
   loaded_matchit = 1,
   loaded_matchparen = 1,
 
+  loaded_fzf = 1,
+
   -- filetype.lua support
   did_load_filetypes = 0,
   do_filetype_lua = 1,
 }
 
 -- filetypes
-vim.filetype.add({
+vim.filetype.add {
   extension = {
-    asm = "nasm",
-    zig = "zig",
+    asm = 'nasm',
+    zig = 'zig',
   },
-})
+}

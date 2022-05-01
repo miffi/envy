@@ -1,6 +1,6 @@
 local lspconfig = require 'lspconfig'
 
-local on_attach = function(client)
+local on_attach = function()
   vim.wo.signcolumn = 'yes'
   vim.bo.formatexpr = 'v:lua.vim.lsp.formatexpr'
 
@@ -10,6 +10,8 @@ local on_attach = function(client)
   vim.keymap.set('n', '<localleader>a', vim.lsp.buf.code_action, { buffer = true })
   vim.keymap.set('n', '<localleader>r', vim.lsp.buf.rename, { buffer = true })
 
+  vim.keymap.set('n', '[d', vim.diagnostic.goto_next, { buffer = true })
+  vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { buffer = true })
 end
 
 --[[ require('null-ls').setup {

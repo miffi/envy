@@ -1,0 +1,37 @@
+# based on the neovim lspconfig toml file
+
+[selene]
+base = "lua51"
+name = "envy"
+
+[[use.args]]
+type = "table"
+
+[vim]
+any = true
+
+[[assert.args]]
+type = "bool"
+
+[[assert.args]]
+type = "string"
+required = false
+
+[[after_each.args]]
+type = "function"
+
+[[before_each.args]]
+type = "function"
+
+[[describe.args]]
+type = "string"
+
+[[describe.args]]
+type = "function"
+
+[[it.args]]
+type = "string"
+
+[[it.args]]
+type = "function"
+

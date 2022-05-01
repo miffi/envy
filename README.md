@@ -9,4 +9,4 @@ I've documented it as much as I've thought is necessary. Feel free to take
 anything from here.
 
 If you have any questions, suggestions, etc. feel free to make an issue. Thanks
-for visiting. ^^
+for visiting.
