@@ -4,14 +4,12 @@ local on_attach = function(client)
   vim.wo.signcolumn = 'yes'
   vim.bo.formatexpr = 'v:lua.vim.lsp.formatexpr'
 
-  return require('nest').applyKeymaps {
-    buffer = true,
-    { 'K', vim.lsp.buf.hover },
-    { '<c-]>', vim.lsp.buf.definition },
-    { '<localleader>f', vim.lsp.buf.formatting },
-    { '<localleader>a', vim.lsp.buf.code_action },
-    { '<localleader>r', vim.lsp.buf.rename },
-  }
+  vim.keymap.set('n', 'K', vim.lsp.buf.hover, { buffer = true })
+  vim.keymap.set('n', '<c-]>', vim.lsp.buf.definition, { buffer = true })
+  vim.keymap.set('n', '<localleader>f', vim.lsp.buf.formatting, { buffer = true })
+  vim.keymap.set('n', '<localleader>a', vim.lsp.buf.code_action, { buffer = true })
+  vim.keymap.set('n', '<localleader>r', vim.lsp.buf.rename, { buffer = true })
+
 end
 
 --[[ require('null-ls').setup {
@@ -35,6 +33,8 @@ lspconfig.util.default_config = vim.tbl_extend('force', lspconfig.util.default_c
 })
 
 -- LSPs
+lspconfig.pyright.setup {}
+lspconfig.zls.setup {}
 lspconfig.dartls.setup {}
 lspconfig.clangd.setup {}
 lspconfig.rust_analyzer.setup {

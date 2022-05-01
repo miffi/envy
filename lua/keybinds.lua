@@ -1,47 +1,39 @@
 vim.g.mapleader = ' '
-vim.g.localleader = '-'
+-- vim.g.localleader = '-'
 
-require('nest').applyKeymaps {
-  { '<leader>', {
-    { '<leader>', '<cmd>b#<cr>' },
-    { 'w', '<cmd>up<cr>' },
+--- Leader binds
+vim.keymap.set('n', '<leader>w', '<cmd>up<cr>', { silent = true })
 
-    -- Windowing binds made better
-    { 'h', '<c-w>h' },
-    { 'j', '<c-w>j' },
-    { 'k', '<c-w>k' },
-    { 'l', '<c-w>l' },
+-- Windowing binds made better
+for _, i in ipairs({ 'h', 'j', 'k', 'l' }) do
+  vim.keymap.set('n', '<leader>' .. i, '<c-w>' .. i)
+  local up = i:upper()
+  vim.keymap.set('n', '<leader>' .. i, '<c-w>' .. i)
+end
 
-    { 'H', '<c-w>H' },
-    { 'J', '<c-w>J' },
-    { 'K', '<c-w>K' },
-    { 'L', '<c-w>L' },
+-- I never really found a good key for localleader, so localleader is <leader>;
+vim.keymap.set('n', '<leader>;', '<localleader>', { remap = true })
 
-    { options = { noremap = false }, {
-      -- I never really found a good key for localleader, so localleader is
-      -- <leader>;
-      { ';', '<localleader>' },
+-- Separated global clipboard
+for _, i in ipairs({'d', 'c', 'p', 'P'}) do
+  vim.keymap.set({ 'n', 'v' }, '<leader>' .. i, '"+' .. i, { remap = true })
+end
 
-      -- Separated global clipboard
-      { mode = 'nv', {
-        {'y', '"+y'},
-        {'d', '"+d'},
-        {'p', '"+p'},
-        {'P', '"+P'},
-      }},
-    }},
-  }},
+--- Misc binds
+-- Turn the ex mode bind to something mildly useful
+vim.keymap.set('n', 'Q', 'qq')
 
-  -- Turn the ex mode bind to something mildly useful
-  { 'Q', 'q:' },
+-- I don't like how join moves the cursor.
+vim.keymap.set('n', 'J', 'mzJ`z')
 
-  -- I don't like how join moves the cursor.
-  { 'J', 'mzJ`z' },
+-- center search results
+vim.keymap.set('n', 'n', 'nzzzv')
+vim.keymap.set('n', 'N', 'Nzzzv')
 
-  -- center search results
-  { 'n' , 'nzzzv' },
-  { 'N' , 'Nzzzv' },
+-- Control backspace is pretty good
+vim.keymap.set({ 'i', 'c' }, '', '<c-w>')
 
-  -- Control backspace is pretty good
-  { '' , '<c-w>', mode = 'ic' },
-}
+-- vim.keymap.set('', '[[', '?{<CR>w99[{')
+-- vim.keymap.set('', '][', '/}<CR>b99]}')
+-- vim.keymap.set('', ']]', 'j0[[%/{<CR>', { remap = true })
+-- vim.keymap.set('', '[]', 'k$][%?}<CR>', { remap = true })

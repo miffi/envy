@@ -2,11 +2,6 @@ return require('packer').startup(function()
   -- let packer maintain itself
   use 'wbthomason/packer.nvim'
 
-
-  -- keybind management plugin
-  use 'lionC/nest.nvim'
-
-
   -- movement/quality of life
   use {
     -- comment/uncomment stuff
@@ -18,28 +13,30 @@ return require('packer').startup(function()
     'tpope/vim-unimpaired',
     keys = { '[', ']', 'yo' },
   }
-  use {
+  --[[ use {
     -- automatically pair braces, parens, etc.
     'windwp/nvim-autopairs',
     config = function()
-      require('nvim-autopairs').setup{}
+      require('nvim-autopairs').setup{
+        disable_filetype = { "lisp", "scheme", "clojure" },
+      }
     end,
-  }
-
+  } ]]
 
   use {
     -- configuration for the built-in lsp
     'neovim/nvim-lspconfig',
     config = function()
-      require 'plug/lsp'
+      require 'conf/lsp'
     end,
     requires = {
       {
-        -- null-ls is a kinda ad-hoc way to hook non-lsp processes onto nvim's
+        -- null-ls is an ad-hoc way to hook non-lsp processes onto nvim's
         -- lsp system
         'jose-elias-alvarez/null-ls.nvim', module = 'null-ls',
         requires = { 'nvim-lua/plenary.nvim', module_pattern = 'plenary.*' },
       },
+      'https://github.com/jubnzv/virtual-types.nvim'
     },
   }
 
@@ -55,15 +52,12 @@ return require('packer').startup(function()
       'saadparwaiz1/cmp_luasnip',
     },
     config = function()
-      require'plug/cmp'
+      require'conf/cmp'
     end,
   }
   use {
     -- a lua based snippet plugin, with lsp support
     'L3MON4D3/LuaSnip',
-    config = function()
-      require'plug/luasnip'
-    end,
   }
 
   -- telescope
@@ -87,11 +81,12 @@ return require('packer').startup(function()
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate',
     config = function()
-      require 'plug/treesitter'
+      require 'conf/treesitter'
     end,
     requires = {
       -- some convenience functionality for treesitter
       { 'nvim-treesitter/playground' },
+      { 'nvim-treesitter/nvim-treesitter-textobjects' }
     },
   }
 
@@ -129,6 +124,7 @@ return require('packer').startup(function()
   -- filetype/syntax
   use 'neovimhaskell/haskell-vim'
   use 'derekelkins/agda-vim'
+  use 'kmonad/kmonad-vim'
 
   --
   -- miscellaneous
@@ -136,10 +132,12 @@ return require('packer').startup(function()
   -- measuring startup time
   use 'dstein64/vim-startuptime'
 
-  use {
+  --[[ use {
     -- streamlining coding competitions
     'xeluxee/competitest.nvim',
     requires = 'MunifTanjim/nui.nvim',
     config = function() require'competitest'.setup() end
-  }
+  } ]]
+
+  use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
 end)
