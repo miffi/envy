@@ -108,6 +108,7 @@ return require('packer').startup(function()
   use {
     '~/prog/apropospriate.nvim',
     config = function()
+      vim.o.background = "dark"
       vim.cmd [[colorscheme apropospriate]]
     end,
   }
