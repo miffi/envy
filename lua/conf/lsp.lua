@@ -14,13 +14,6 @@ local on_attach = function()
   vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { buffer = true })
 end
 
---[[ require('null-ls').setup {
-  sources = {
-    require('null-ls').builtins.formatting.stylua,
-    on_attach = keybinds,
-  },
-} ]]
-
 -- default config
 lspconfig.util.default_config = vim.tbl_extend('force', lspconfig.util.default_config, {
   on_attach = on_attach,
@@ -37,7 +30,6 @@ lspconfig.util.default_config = vim.tbl_extend('force', lspconfig.util.default_c
 -- LSPs
 lspconfig.pyright.setup {}
 lspconfig.zls.setup {}
-lspconfig.dartls.setup {}
 lspconfig.clangd.setup {}
 lspconfig.rust_analyzer.setup {
   settings = {
@@ -45,7 +37,17 @@ lspconfig.rust_analyzer.setup {
       diagnostics = {
         enable = true,
       },
+      assist = {
+        importGranularity = 'module',
+        importPrefix = 'self',
+      },
+      cargo = {
+        loadOutDirsFromCheck = true,
+      },
+      procMacro = {
+        enable = true,
+      },
     },
   },
 }
-lspconfig.texlab.setup {}
+-- lspconfig.texlab.setup {}

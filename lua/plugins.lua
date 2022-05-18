@@ -2,6 +2,15 @@ return require('packer').startup(function()
   -- let packer maintain itself
   use { 'wbthomason/packer.nvim' }
 
+  -- Improve load times
+  -- This really helps when I have some of the heavier plugins like nvim-cmp or
+  -- telescope on.
+  --
+  -- Remove this when https://github.com/neovim/neovim/pull/15436 gets merged.
+  use {
+    'lewis6991/impatient.nvim',
+  }
+
   -- movement/quality of life
   use {
     -- comment/uncomment stuff
@@ -11,7 +20,6 @@ return require('packer').startup(function()
         prefer_single_line_comments = true,
       })
     end,
-    keys = 'gc',
   }
   use {
     -- some nice keybinds
@@ -34,7 +42,6 @@ return require('packer').startup(function()
       -- sources
       -- lsp source
       'hrsh7th/cmp-nvim-lsp',
-
       -- snippet integration
       'saadparwaiz1/cmp_luasnip',
     },
@@ -48,7 +55,7 @@ return require('packer').startup(function()
   }
 
   -- telescope
-  --[[ use {
+  use {
     -- lua native fuzzy finder
     'nvim-telescope/telescope.nvim',
     requires = {
@@ -56,12 +63,11 @@ return require('packer').startup(function()
       -- implementation of the fzf algorithm in lua
       { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
     },
-    module = 'telescope',
+    -- module = 'telescope',
     config = function()
-      require('telescope').setup {}
-      require('telescope').load_extension 'fzf'
+      require 'conf/telescope'
     end,
-  } ]]
+  }
 
   -- treesitter
   use {
@@ -72,8 +78,8 @@ return require('packer').startup(function()
     end,
     requires = {
       -- some convenience functionality for treesitter
-      { 'nvim-treesitter/playground' },
-      { 'nvim-treesitter/nvim-treesitter-textobjects' },
+      'nvim-treesitter/playground',
+      'nvim-treesitter/nvim-treesitter-textobjects',
     },
   }
 
@@ -87,56 +93,34 @@ return require('packer').startup(function()
   -- latex
   use {
     'lervag/vimtex',
-    filetype = 'tex',
-    config = function()
+    filetype = { 'tex', 'bib' },
+    setup = function()
       require('util').set_vars {
         tex_flavor = 'latex',
         vimtex_view_method = 'zathura',
-        vimtex_quickfix_mode = '0',
       }
     end,
   }
 
-  -- colorscheme
-  --[[ use {
-    -- a port of the emacs colorscheme I like
-    -- repo is at https://github.com/miffi/apropospriate.nvim
-    'miffi/apropospriate.nvim',
-    requires = { 'rktjmp/lush.nvim' },
-  } ]]
-
   use {
     '~/prog/apropospriate.nvim',
     config = function()
-      vim.o.background = "dark"
-      vim.cmd [[colorscheme apropospriate]]
+      vim.o.background = 'dark'
+      vim.api.nvim_command 'colorscheme apropospriate'
     end,
   }
-
-  -- use {
-  -- 'morhetz/gruvbox',
-  -- config = function()
-  -- vim.cmd[[colorscheme gruvbox]]
-  -- end,
-  -- }
 
   -- filetype/syntax
   -- use 'neovimhaskell/haskell-vim'
   -- use 'derekelkins/agda-vim'
   -- use 'kmonad/kmonad-vim'
+  use { 'gpanders/editorconfig.nvim' }
 
   --
   -- miscellaneous
   --
   -- measuring startup time
   use { 'dstein64/vim-startuptime' }
-
-  --[[ use {
-    -- streamlining coding competitions
-    'xeluxee/competitest.nvim',
-    requires = 'MunifTanjim/nui.nvim',
-    config = function() require'competitest'.setup() end
-  } ]]
 
   use {
     'TimUntersberger/neogit',

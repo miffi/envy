@@ -18,6 +18,9 @@ util.set_options {
   splitright = true,
   splitbelow = true,
 
+  -- number of lines to keep above or below the cursor
+  scrolloff = 5,
+
   -- textwidth = 72,
 
   -- don't annoy me to save stuff on buffer switch
@@ -48,7 +51,7 @@ util.set_options {
   -- aesthetic changes
   -- guicursor = '',
   showmode = false,
-  ruler = false,
+  ruler = true,
   fcs = 'eob: ',
 }
 
@@ -67,6 +70,7 @@ util.set_vars {
   loaded_matchit = 1,
   loaded_matchparen = 1,
 
+  -- xbps installs the fzf.vim plugin alongside fzf for some reason
   loaded_fzf = 1,
 
   -- filetype.lua support
@@ -81,3 +85,16 @@ vim.filetype.add {
     zig = 'zig',
   },
 }
+
+vim.api.nvim_create_autocmd("BufWritePost", {
+  desc = [[Make files with shebang lines user executable.]],
+  callback = function(table)
+    local first_line = vim.api.nvim_buf_get_lines(table.buf, 0, 1, false)[1] or ''
+    if string.find(first_line, "^#!%s*[^%s]") then
+      local perms = vim.fn.getfperm(table.file)
+      -- replace the third character with an x
+      perms = ("%s%s%s"):format(perms:sub(1, 2), 'x', perms:sub(4))
+      vim.fn.setfperm(table.file, perms)
+    end
+  end,
+})

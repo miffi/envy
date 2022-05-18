@@ -27,13 +27,8 @@ vim.keymap.set('n', 'Q', 'qq')
 vim.keymap.set('n', 'J', 'mzJ`z')
 
 -- center search results
-vim.keymap.set('n', 'n', 'nzzzv')
-vim.keymap.set('n', 'N', 'Nzzzv')
+--[[ vim.keymap.set('n', 'n', 'nzzzv')
+vim.keymap.set('n', 'N', 'Nzzzv') ]]
 
 -- Control backspace is pretty good
 vim.keymap.set({ 'i', 'c' }, '', '<c-w>')
-
--- vim.keymap.set('', '[[', '?{<CR>w99[{')
--- vim.keymap.set('', '][', '/}<CR>b99]}')
--- vim.keymap.set('', ']]', 'j0[[%/{<CR>', { remap = true })
--- vim.keymap.set('', '[]', 'k$][%?}<CR>', { remap = true })
