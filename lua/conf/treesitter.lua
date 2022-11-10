@@ -2,23 +2,23 @@ vim.opt['foldmethod'] = 'expr'
 vim.opt['foldexpr'] = 'nvim_treesitter#foldexpr()'
 
 require('nvim-treesitter.configs').setup {
-  ensure_installed = { 'c', 'cpp', 'rust', 'lua' }, -- 'all' or a list of languages
+  ensure_installed = { 'c', 'cpp', 'rust', 'lua', 'comment' }, -- 'all' or a list of languages
   highlight = {
     enable = true, -- false will disable the whole extension
 
-    -- I'm gonna run with the vimtex highlight for now. Treesitter's
-    -- highlighting is useable, but there's some functionality missing. I'll
-    -- maybe try to make a new plugin to fill that in.
-    --
     -- Treesitter doesn't have @Spell support, which is ass. `'spell'` tags
     -- every function as a misspelling.
     -- https://github.com/nvim-treesitter/nvim-treesitter/issues/698
     --
     -- There's spellsitter.nvim, but it's a hack, calling `syntax` under the
     -- hood to emulate the functionality. Additionally, for some reason, it has
-    -- a huge lag spike (3-4 seconsds) for me every time I open a treesitter
+    -- a huge lag spike (3-4 seconds) for me every time I open a treesitter
     -- highlighted buffer so I'm not going to be using that.
-    disable = { "latex" },
+
+    -- I'm gonna run with the vimtex highlight for now. Treesitter's
+    -- highlighting is useable, but there's some functionality missing. I'll
+    -- maybe try to make a new plugin to fill that in.
+    disable = { 'latex' },
   },
   indent = {
     enable = true,

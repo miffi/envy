@@ -1,17 +1,29 @@
 return require('packer').startup(function()
-  -- let packer maintain itself
-  use { 'wbthomason/packer.nvim' }
-
-  -- Improve load times
-  -- This really helps when I have some of the heavier plugins like nvim-cmp or
-  -- telescope on.
-  --
-  -- Remove this when https://github.com/neovim/neovim/pull/15436 gets merged.
   use {
+    -- let packer maintain itself
+    'wbthomason/packer.nvim',
+  }
+
+  use {
+    -- Improve load times with caching
+    -- This really helps when I have some of the heavier plugins like nvim-cmp or
+    -- telescope on.
+    --
+    -- Remove this when https://github.com/neovim/neovim/pull/15436 gets merged.
     'lewis6991/impatient.nvim',
   }
 
-  -- movement/quality of life
+  use {
+    'windwp/nvim-autopairs',
+    config = function()
+      require('nvim-autopairs').setup {}
+    end,
+  }
+
+  use {
+    'tpope/vim-abolish',
+  }
+
   use {
     -- comment/uncomment stuff
     'b3nj5m1n/kommentary',
@@ -20,11 +32,6 @@ return require('packer').startup(function()
         prefer_single_line_comments = true,
       })
     end,
-  }
-  use {
-    -- some nice keybinds
-    'tpope/vim-unimpaired',
-    keys = { '[', ']', 'yo' },
   }
 
   use {
@@ -38,6 +45,7 @@ return require('packer').startup(function()
   use {
     -- the best completion plugin around
     'hrsh7th/nvim-cmp',
+    -- disable = true,
     requires = {
       -- sources
       -- lsp source
@@ -52,6 +60,9 @@ return require('packer').startup(function()
   use {
     -- a lua based snippet plugin, with lsp support
     'L3MON4D3/LuaSnip',
+    config = function()
+      require 'conf/luasnip'
+    end,
   }
 
   -- telescope
@@ -77,9 +88,7 @@ return require('packer').startup(function()
       require 'conf/treesitter'
     end,
     requires = {
-      -- some convenience functionality for treesitter
       'nvim-treesitter/playground',
-      'nvim-treesitter/nvim-treesitter-textobjects',
     },
   }
 
@@ -114,7 +123,10 @@ return require('packer').startup(function()
   -- use 'neovimhaskell/haskell-vim'
   -- use 'derekelkins/agda-vim'
   -- use 'kmonad/kmonad-vim'
+  -- use { 'teal-language/vim-teal' }
   use { 'gpanders/editorconfig.nvim' }
+  use { 'vmchale/dhall-vim' }
+  use { 'purescript-contrib/purescript-vim' }
 
   --
   -- miscellaneous

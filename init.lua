@@ -1,12 +1,11 @@
--- Hello! Welcome to my init.lua.
+pcall(require, 'impatient')
 
-require 'impatient'
-
--- Order of the `require`s matter. If the keybinds are after
--- options and there's an error in options, the evaluation
--- stops there and you're stuck without your keybinds. :(
-require 'keybinds'
-require 'options'
+-- In general, it's a good idea to set this early in your config, because otherwise
+-- if you have any mappings you set before doing this, they will be set to the old
+-- leader.
+--
+-- Idea taken from T.J. Devries's config
+vim.g.mapleader = ' '
 
 -- no need to load this immediately, since we have packer_compiled
 vim.defer_fn(function()

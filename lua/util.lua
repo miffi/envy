@@ -12,6 +12,12 @@ function util.set_options(tbl)
   end
 end
 
+function util.set_local_options(tbl)
+  for var, value in pairs(tbl) do
+    vim.opt_local[var] = value
+  end
+end
+
 -- Nabbed from https://stackoverflow.com/a/37040415
 --
 -- This is useful for finding the sytax group under the cursor, and any group

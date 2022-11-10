@@ -8,6 +8,9 @@ util.set_options {
   completeopt = 'menu,menuone,noselect',
   pumheight = 20,
 
+  -- make wildmode conversion more like readline
+  wildmode = "longest:full,full",
+
   -- search options
   ignorecase = true,
   smartcase = true,
@@ -27,9 +30,12 @@ util.set_options {
   hidden = true,
 
   -- history = 5000,
+  
+  mouse = '',
 
   -- number options
-  number = false,
+  number = true,
+  relativenumber = true,
 
   -- don't fold by default
   foldenable = false,
@@ -53,6 +59,7 @@ util.set_options {
   showmode = false,
   ruler = true,
   fcs = 'eob: ',
+  cmdheight = 1, -- cmdheight = 0 is still kinda busted for v0.8.0
 }
 
 util.set_vars {
@@ -72,10 +79,6 @@ util.set_vars {
 
   -- xbps installs the fzf.vim plugin alongside fzf for some reason
   loaded_fzf = 1,
-
-  -- filetype.lua support
-  did_load_filetypes = 0,
-  do_filetype_lua = 1,
 }
 
 -- filetypes
@@ -86,14 +89,14 @@ vim.filetype.add {
   },
 }
 
-vim.api.nvim_create_autocmd("BufWritePost", {
+vim.api.nvim_create_autocmd('BufWritePost', {
   desc = [[Make files with shebang lines user executable.]],
   callback = function(table)
     local first_line = vim.api.nvim_buf_get_lines(table.buf, 0, 1, false)[1] or ''
-    if string.find(first_line, "^#!%s*[^%s]") then
+    if string.find(first_line, '^#!%s*[^%s]') then
       local perms = vim.fn.getfperm(table.file)
       -- replace the third character with an x
-      perms = ("%s%s%s"):format(perms:sub(1, 2), 'x', perms:sub(4))
+      perms = ('%s%s%s'):format(perms:sub(1, 2), 'x', perms:sub(4))
       vim.fn.setfperm(table.file, perms)
     end
   end,
