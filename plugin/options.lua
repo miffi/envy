@@ -30,7 +30,7 @@ util.set_options {
   hidden = true,
 
   -- history = 5000,
-  
+
   mouse = '',
 
   -- number options
@@ -55,11 +55,17 @@ util.set_options {
   termguicolors = true,
 
   -- aesthetic changes
+  cursorline = true,
+  cursorlineopt = 'number',
+
+  background = 'dark';
   -- guicursor = '',
+
+  cmdheight = 1, -- cmdheight = 0 is still kinda busted for v0.8.0
   showmode = false,
   ruler = true,
+  
   fcs = 'eob: ',
-  cmdheight = 1, -- cmdheight = 0 is still kinda busted for v0.8.0
 }
 
 util.set_vars {
@@ -72,7 +78,7 @@ util.set_vars {
   loaded_tar = 1,
   loaded_tarPlugin = 1,
   loaded_zipPlugin = 1,
-  loaded_netrw = 1,
+  -- loaded_netrw = 1,
   loaded_netrwPlugin = 1,
   loaded_matchit = 1,
   loaded_matchparen = 1,
@@ -84,20 +90,15 @@ util.set_vars {
 -- filetypes
 vim.filetype.add {
   extension = {
-    asm = 'nasm',
+    -- asm = 'nasm',
     zig = 'zig',
+    sway = 'swayconfig',
   },
 }
 
-vim.api.nvim_create_autocmd('BufWritePost', {
-  desc = [[Make files with shebang lines user executable.]],
-  callback = function(table)
-    local first_line = vim.api.nvim_buf_get_lines(table.buf, 0, 1, false)[1] or ''
-    if string.find(first_line, '^#!%s*[^%s]') then
-      local perms = vim.fn.getfperm(table.file)
-      -- replace the third character with an x
-      perms = ('%s%s%s'):format(perms:sub(1, 2), 'x', perms:sub(4))
-      vim.fn.setfperm(table.file, perms)
-    end
-  end,
-})
+vim.diagnostic.config {
+  virtual_text = true,
+  underline = true,
+  severity_sort = true,
+  update_in_insert = false,
+}
