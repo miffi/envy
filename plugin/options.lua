@@ -1,11 +1,11 @@
-local util = require 'util'
+local util = require("util")
 
-util.set_options {
-  foldmethod = 'marker',
-  shortmess = vim.o.shortmess .. 'I',
+util.set_options({
+  foldmethod = "marker",
+  -- shortmess = vim.o.shortmess .. 'I',
 
   -- completion options
-  completeopt = 'menu,menuone,noselect',
+  completeopt = "menu,menuone,noselect",
   pumheight = 20,
 
   -- make wildmode conversion more like readline
@@ -31,11 +31,12 @@ util.set_options {
 
   -- history = 5000,
 
-  mouse = '',
+  mouse = "",
 
   -- number options
   number = true,
   relativenumber = true,
+  signcolumn = "yes",
 
   -- don't fold by default
   foldenable = false,
@@ -48,27 +49,28 @@ util.set_options {
   autoindent = true,
   smartindent = true,
 
+  -- aesthetic changes
+
   -- statuslines
-  laststatus = 2,
+  laststatus = 3,
   showtabline = 1,
 
   termguicolors = true,
 
-  -- aesthetic changes
   cursorline = true,
-  cursorlineopt = 'number',
+  cursorlineopt = "number",
 
-  background = 'dark';
+  background = "dark",
   -- guicursor = '',
 
-  cmdheight = 1, -- cmdheight = 0 is still kinda busted for v0.8.0
+  cmdheight = 1,
   showmode = false,
   ruler = true,
-  
-  fcs = 'eob: ',
-}
 
-util.set_vars {
+  fcs = "eob: ",
+})
+
+util.set_vars({
   -- These variables stop some default plugins for loading plugins concerned with
   -- archives, netrw and matching parentheses. Remove the lines to load the
   -- plugins normally.
@@ -78,27 +80,49 @@ util.set_vars {
   loaded_tar = 1,
   loaded_tarPlugin = 1,
   loaded_zipPlugin = 1,
-  -- loaded_netrw = 1,
+  loaded_netrw = 1,
   loaded_netrwPlugin = 1,
   loaded_matchit = 1,
   loaded_matchparen = 1,
 
   -- xbps installs the fzf.vim plugin alongside fzf for some reason
   loaded_fzf = 1,
-}
+})
 
 -- filetypes
-vim.filetype.add {
+vim.filetype.add({
   extension = {
-    -- asm = 'nasm',
-    zig = 'zig',
-    sway = 'swayconfig',
+    zig = "zig",
+    nasm = "nasm",
   },
+})
+
+local severity = {
+  { name = "Error", icon = "✘" },
+  { name = "Warn", icon = "?" },
+  { name = "Info", icon = "ἰ" },
+  { name = "Hint", icon = "!" },
+  { name = "Ok", icon = "✔" },
 }
 
-vim.diagnostic.config {
+vim.diagnostic.config({
   virtual_text = true,
   underline = true,
   severity_sort = true,
-  update_in_insert = false,
-}
+  float = {
+    scope = "line",
+    header = false,
+    source = "if_many",
+    prefix = function(diagnostic, _, _)
+      local sev = severity[diagnostic.severity] or severity[5]
+      return sev["icon"] .. " ", "Diagnostic" .. sev["name"]
+    end,
+  },
+})
+
+for _, entry in ipairs(severity) do
+  vim.fn.sign_define(
+    "DiagnosticSign" .. entry["name"],
+    { text = entry["icon"], texthl = "Diagnostic" .. entry["name"] }
+  )
+end
