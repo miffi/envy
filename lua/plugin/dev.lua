@@ -20,12 +20,9 @@ return {
 
   {
     -- comment/uncomment stuff
-    "b3nj5m1n/kommentary",
-    config = function()
-      require("kommentary.config").configure_language("c", {
-        prefer_single_line_comments = true,
-      })
-    end,
+    "numToStr/Comment.nvim",
+    main = "Comment",
+    config = true,
   },
 
   {

@@ -1,6 +1,7 @@
 return {
   {
     "sindrets/diffview.nvim",
+    cmd = { "DiffviewOpen", "DiffviewFileHistory" },
     opts = {
       use_icons = false,
     },
@@ -12,6 +13,7 @@ return {
       "nvim-lua/plenary.nvim",
       "sindrets/diffview.nvim",
     },
+    cmd = "Neogit",
     config = true,
   },
 }
