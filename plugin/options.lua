@@ -2,7 +2,7 @@ local util = require("util")
 
 util.set_options({
   foldmethod = "marker",
-  -- shortmess = vim.o.shortmess .. 'I',
+  shortmess = vim.o.shortmess .. 'I',
 
   -- completion options
   completeopt = "menu,menuone,noselect",
@@ -83,7 +83,7 @@ util.set_vars({
   loaded_netrw = 1,
   loaded_netrwPlugin = 1,
   loaded_matchit = 1,
-  loaded_matchparen = 1,
+  -- loaded_matchparen = 1,
 
   -- xbps installs the fzf.vim plugin alongside fzf for some reason
   loaded_fzf = 1,
