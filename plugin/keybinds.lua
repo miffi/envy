@@ -1,5 +1,10 @@
 vim.g.mapleader = " "
--- vim.g.localleader = '-'
+
+-- vim.g.maplocalleader = '-'
+--
+-- I never really found a good key for localleader, so localleader is <leader>;
+vim.keymap.set("n", "<leader>;", "<localleader>", { remap = true })
+
 
 --- Leader binds
 vim.keymap.set("n", "<leader>w", "<Cmd>up<CR>", { silent = true })
@@ -17,13 +22,10 @@ for _, i in ipairs({ "h", "j", "k", "l" }) do
   vim.keymap.set("n", "<leader>" .. up, "<c-w>" .. up)
 end
 
--- I never really found a good key for localleader, so localleader is <leader>;
-vim.keymap.set("n", "<leader>;", "<localleader>", { remap = true })
-
 -- Some of vim-unimpaired's binds, cause I don't use half of the plugin's ones
 -- and I'd rather not have to depend on it.
 for map, bind in pairs({ a = "", b = "b", l = "l", q = "c", t = "t" }) do
-  local c = vim.api.nvim_command
+  local c = vim.cmd
 
   vim.keymap.set("n", "[" .. map, function()
     c(tostring(vim.v.count) .. bind .. "previous")
@@ -41,12 +43,18 @@ for map, bind in pairs({ a = "", b = "b", l = "l", q = "c", t = "t" }) do
     c(bind .. "last")
   end, { silent = true })
 end
--- I haven't bound `:cpfile`, `:cnfile`, and stuff because I haven't used them
--- yet. I'll get around to that when I have used one of them at least once.
 
---- Misc binds
--- Some nvim version actually made Q useful
--- vim.keymap.set('n', 'Q', '<nop>')
+for map, bind in pairs({ ["<c-l>"] = "l", ["<c-q>"] = "q" }) do
+  local c = vim.cmd
+
+  vim.keymap.set("n", "[" .. map, function()
+    c(tostring(vim.v.count) .. bind .. "pfile")
+  end, { silent = true })
+
+  vim.keymap.set("n", "]" .. map, function()
+    c(tostring(vim.v.count) .. bind .. "nfile")
+  end, { silent = true })
+end
 
 -- I don't like that join moves the cursor.
 vim.keymap.set("n", "J", "mzJ`z")

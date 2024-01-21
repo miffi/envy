@@ -7,33 +7,32 @@ return {
   },
 
   {
+    "tpope/vim-abolish",
+  },
+
+  {
     "stevearc/oil.nvim",
-    lazy = false,
-    name = "oil",
     config = true,
   },
 
   {
-    -- comment/uncomment stuff
     "numToStr/Comment.nvim",
-    main = "Comment",
     config = true,
+  },
+
+  {
+    "folke/zen-mode.nvim",
+    opts = {},
   },
 
   {
     "chrisgrieser/nvim-various-textobjs",
-    opts = { useDefaultKeymaps = true },
+    opts = { useDefaultKeymaps = true, disabledKeymaps = { "gc" } },
   },
 
   {
     "kylechui/nvim-surround",
     config = true,
-  },
-
-  {
-    -- a really good solution to paren handling
-    "eraserhd/parinfer-rust",
-    build = "cargo build --release",
   },
 
   {

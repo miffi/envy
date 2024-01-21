@@ -1,6 +1,5 @@
 return {
   "mhartington/formatter.nvim",
-  main = "formatter",
   keys = {
     {
       "<leader>f",
@@ -9,9 +8,9 @@ return {
   },
   opts = {
     filetype = {
-      lua = function()
-        return require("formatter.filetypes.lua").stylua()
-      end,
+--      lua = function()
+--        return require("formatter.filetypes.lua").stylua()
+--      end,
     },
   },
 }

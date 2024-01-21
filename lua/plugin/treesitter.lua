@@ -2,7 +2,6 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     dependencies = {
-      "JoosepAlviste/nvim-ts-context-commentstring",
       "nvim-treesitter/nvim-treesitter-textobjects",
     },
     build = ":TSUpdate",
@@ -12,8 +11,8 @@ return {
       ensure_installed = { "c", "cpp", "rust", "lua", "comment" }, -- 'all' or a list of languages
       highlight = {
         enable = true, -- false will disable the whole extension
-
-        disable = { "latex", "html" },
+        disable = { "latex" },
+        -- additional_vim_regex_highlighting = { "latex", "markdown" },
       },
       indent = {
         enable = true,
@@ -58,10 +57,10 @@ return {
           ["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
         },
       },
-
-      context_commentstring = {
-        enable = true,
-      },
     },
+  },
+
+  {
+    "JoosepAlviste/nvim-ts-context-commentstring",
   },
 }

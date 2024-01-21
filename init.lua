@@ -23,6 +23,13 @@ require("lazy").setup("plugin", {
   change_detection = {
     notify = false,
   },
+  install = {
+    colorscheme = { "apropospriate" },
+  },
+  dev = {
+    path = "~/dev",
+    patterns = { "miffi" },
+  },
   ui = {
     icons = {
       cmd = "⌘",

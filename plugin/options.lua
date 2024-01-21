@@ -1,8 +1,10 @@
 local util = require("util")
 
 util.set_options({
-  foldmethod = "marker",
-  shortmess = vim.o.shortmess .. 'I',
+  foldmethod = "expr",
+  foldexpr = "v:lua.vim.treesitter.foldexpr()",
+  foldtext = "v:lua.vim.treesitter.foldtext()",
+  shortmess = vim.o.shortmess .. "I",
 
   -- completion options
   completeopt = "menu,menuone,noselect",
@@ -37,6 +39,7 @@ util.set_options({
   number = true,
   relativenumber = true,
   signcolumn = "yes",
+  conceallevel = 2,
 
   -- don't fold by default
   foldenable = false,
@@ -50,12 +53,16 @@ util.set_options({
   smartindent = true,
 
   -- aesthetic changes
+  title = true,
+  titlestring = "%<%f %h%m%r%=%-14.(%l,%c%V%) %P",
+  titlelen = 100,
 
   -- statuslines
-  laststatus = 3,
+  laststatus = 0,
   showtabline = 1,
 
-  termguicolors = true,
+  -- On by default from 0.10
+  -- termguicolors = true,
 
   cursorline = true,
   cursorlineopt = "number",
@@ -63,9 +70,9 @@ util.set_options({
   background = "dark",
   -- guicursor = '',
 
-  cmdheight = 1,
+  cmdheight = 0,
   showmode = false,
-  ruler = true,
+  ruler = false,
 
   fcs = "eob: ",
 })
