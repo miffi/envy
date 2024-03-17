@@ -62,7 +62,7 @@ util.set_options({
   background = "dark",
   -- guicursor = '',
 
-  cmdheight = 0,
+  cmdheight = 1,
   showmode = false,
   ruler = false,
 
