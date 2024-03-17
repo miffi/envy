@@ -31,48 +31,6 @@ return {
       "nvim-lua/plenary.nvim",
       { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
     },
-    keys = {
-      {
-        "<leader><leader>b",
-        function()
-          require("telescope.builtin").buffers()
-        end,
-      },
-      {
-        "<leader><leader>c",
-        function()
-          require("telescope.builtin").find_files({ cwd = vim.fn.expand("$XDG_CONFIG_HOME") })
-        end,
-      },
-      {
-        "<leader><leader>f",
-        function()
-          require("telescope.builtin").find_files()
-        end,
-      },
-      {
-        "<leader><leader>g",
-        function()
-          require("telescope.builtin").live_grep()
-        end,
-      },
-
-      {
-        "<leader><leader>v",
-        function()
-          require("telescope.builtin").find_files({ cwd = vim.fn.stdpath("config") })
-        end,
-      },
-
-      {
-        "<leader><leader>r",
-        function()
-          require("telescope.builtin").find_files({
-            cwd = vim.fn.fnamemodify(vim.fn.expand("$DOTREMINDERS"), ":h"),
-          })
-        end,
-      },
-    },
     opts = {
       defaults = layout,
     },

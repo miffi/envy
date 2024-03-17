@@ -1,9 +1,6 @@
 local util = require("util")
 
 util.set_options({
-  foldmethod = "expr",
-  foldexpr = "v:lua.vim.treesitter.foldexpr()",
-  foldtext = "v:lua.vim.treesitter.foldtext()",
   shortmess = vim.o.shortmess .. "I",
 
   -- completion options
@@ -41,9 +38,6 @@ util.set_options({
   signcolumn = "yes",
   conceallevel = 2,
 
-  -- don't fold by default
-  foldenable = false,
-
   -- indenting options
   tabstop = 2,
   shiftwidth = 2,
@@ -56,13 +50,11 @@ util.set_options({
   title = true,
   titlestring = "%<%f %h%m%r%=%-14.(%l,%c%V%) %P",
   titlelen = 100,
+  fillchars = "eob: ,fold: ",
 
   -- statuslines
   laststatus = 0,
   showtabline = 1,
-
-  -- On by default from 0.10
-  -- termguicolors = true,
 
   cursorline = true,
   cursorlineopt = "number",
@@ -118,7 +110,7 @@ vim.diagnostic.config({
   severity_sort = true,
   float = {
     scope = "line",
-    header = false,
+    header = "",
     source = "if_many",
     prefix = function(diagnostic, _, _)
       local sev = severity[diagnostic.severity] or severity[5]

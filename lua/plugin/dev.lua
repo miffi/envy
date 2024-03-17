@@ -11,18 +11,8 @@ return {
   },
 
   {
-    "stevearc/oil.nvim",
-    config = true,
-  },
-
-  {
     "numToStr/Comment.nvim",
     config = true,
-  },
-
-  {
-    "folke/zen-mode.nvim",
-    opts = {},
   },
 
   {

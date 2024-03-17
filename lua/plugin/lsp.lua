@@ -1,5 +1,3 @@
-local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
-
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer
 vim.api.nvim_create_autocmd('LspAttach', {
@@ -54,24 +52,14 @@ return {
     config = function()
       local lspconfig = require("lspconfig")
 
-      local on_attach = function(client, bufnr)
-        if client.server_capabilities.documentFormattingProvider then
-          vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-          vim.api.nvim_create_autocmd("BufWritePre", {
-            group = augroup,
-            buffer = bufnr,
-            callback = function()
-              vim.lsp.buf.format()
-            end,
-          })
-        end
-      end
-
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
+      capabilities.textDocument.foldingRange = {
+        dynamicRegistration = false,
+        lineFoldingOnly = true
+      }
 
       -- default config
       lspconfig.util.default_config = vim.tbl_deep_extend("force", lspconfig.util.default_config, {
-        on_attach = on_attach,
         capabilities = capabilities,
       })
 
@@ -108,6 +96,9 @@ return {
       })
       lspconfig.beancount.setup({
       })
+      lspconfig.pyright.setup({})
+      lspconfig.hls.setup({})
+      lspconfig.gleam.setup({})
     end,
   },
 
@@ -135,7 +126,7 @@ return {
         local extension_path = vim.env.HOME .. '/opt/vscode-lldb/'
         local codelldb_path = extension_path .. 'adapter/codelldb'
         local liblldb_path = extension_path .. 'lldb/lib/liblldb'
-        local this_os = vim.uv.os_uname().sysname;
+        local this_os = vim.loop.os_uname().sysname;
 
         -- The path is different on Windows
         if this_os:find "Windows" then
@@ -155,6 +146,8 @@ return {
       end
     end
   },
+
+  { "folke/neodev.nvim", opts = {} },
 
   {
     'saecki/crates.nvim',
