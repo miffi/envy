@@ -8,13 +8,13 @@ end
 
 function util.set_options(tbl)
   for var, value in pairs(tbl) do
-    vim.opt[var] = value
+    vim.o[var] = value
   end
 end
 
 function util.set_local_options(tbl)
   for var, value in pairs(tbl) do
-    vim.opt_local[var] = value
+    vim.bo[var] = value
   end
 end
 
