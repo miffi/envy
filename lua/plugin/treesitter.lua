@@ -35,6 +35,7 @@ return {
           goto_next_start = {
             ["]m"] = "@function.outer",
             ["]]"] = { query = "@class.outer", desc = "Next class start" },
+            ["]o"] = "@loop.*",
           },
           goto_next_end = {
             ["]M"] = "@function.outer",
