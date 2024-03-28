@@ -53,7 +53,8 @@ util.set_options({
   fillchars = "eob: ,fold: ",
 
   -- statuslines
-  laststatus = 0,
+  laststatus = 3,
+  statusline = "%#WinSeparator#",
   showtabline = 1,
 
   cursorline = true,
