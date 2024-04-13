@@ -3,7 +3,12 @@ return {
   version = "*", -- recommended, use latest release instead of latest commit
 
   ft = "markdown",
-  cmd = { "ObsidianNew", "ObsidianToday", "ObsidianSearch", "ObsidianWorkspace" },
+  cmd = {
+    "ObsidianNew",
+    "ObsidianToday",
+    "ObsidianSearch",
+    "ObsidianWorkspace",
+  },
 
   dependencies = {
     "nvim-lua/plenary.nvim",
@@ -32,6 +37,6 @@ return {
       },
 
       external_link_icon = { char = "", hl_group = "ObsidianExtLinkIcon" },
-    }
+    },
   },
 }

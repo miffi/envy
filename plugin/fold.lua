@@ -22,11 +22,14 @@ local function parse_line(linenr)
 
   local line_pos = 0
 
-  for id, node, metadata in query:iter_captures(tree:root(), 0, linenr - 1, linenr) do
+  for id, node, metadata in
+    query:iter_captures(tree:root(), 0, linenr - 1, linenr)
+  do
     local name = query.captures[id]
     local start_row, start_col, end_row, end_col = node:range()
 
-    local priority = tonumber(metadata.priority or vim.highlight.priorities.treesitter)
+    local priority =
+      tonumber(metadata.priority or vim.highlight.priorities.treesitter)
 
     if start_row == linenr - 1 and end_row == linenr - 1 then
       -- check for characters ignored by treesitter
@@ -40,7 +43,11 @@ local function parse_line(linenr)
       line_pos = end_col
 
       local text = line:sub(start_col + 1, end_col)
-      table.insert(result, { text, { { "@" .. name, priority } }, range = { start_col, end_col } })
+      table.insert(result, {
+        text,
+        { { "@" .. name, priority } },
+        range = { start_col, end_col },
+      })
     end
   end
 
@@ -48,7 +55,11 @@ local function parse_line(linenr)
   while i <= #result do
     -- find first capture that is not in current range and apply highlights on the way
     local j = i + 1
-    while j <= #result and result[j].range[1] >= result[i].range[1] and result[j].range[2] <= result[i].range[2] do
+    while
+      j <= #result
+      and result[j].range[1] >= result[i].range[1]
+      and result[j].range[2] <= result[i].range[2]
+    do
       for k, v in ipairs(result[i][2]) do
         if not vim.tbl_contains(result[j][2], v) then
           table.insert(result[j][2], k, v)
@@ -112,7 +123,7 @@ _G.get_foldtext = function()
   return result
 end
 
-require('util').set_options {
+require("util").set_options {
   foldtext = "v:lua.get_foldtext()",
   foldmethod = "expr",
   foldexpr = "v:lua.vim.treesitter.foldexpr()",

@@ -1,8 +1,14 @@
 return {
-  'isovector/cornelis',
-  dependencies = {
-    'kana/vim-textobj-user',
-    'neovimhaskell/nvim-hs.vim',
+  {
+    "iamcco/markdown-preview.nvim",
+    cmd = {
+      "MarkdownPreviewToggle",
+      "MarkdownPreview",
+      "MarkdownPreviewStop",
+    },
+    ft = { "markdown" },
+    build = function()
+      vim.fn["mkdp#util#install"]()
+    end,
   },
-  build = 'stack build',
 }

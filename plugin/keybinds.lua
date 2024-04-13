@@ -15,7 +15,7 @@ vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { silent = true })
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { silent = true })
 
 -- Windowing binds made better
-for _, i in ipairs({ "h", "j", "k", "l" }) do
+for _, i in ipairs { "h", "j", "k", "l" } do
   vim.keymap.set("n", "<leader>" .. i, "<c-w>" .. i)
   local up = i:upper()
   vim.keymap.set("n", "<leader>" .. up, "<c-w>" .. up)
@@ -23,7 +23,7 @@ end
 
 -- Some of vim-unimpaired's binds, cause I don't use half of the plugin's ones
 -- and I'd rather not have to depend on it.
-for map, bind in pairs({ a = "", b = "b", l = "l", q = "c", t = "t" }) do
+for map, bind in pairs { a = "", b = "b", l = "l", q = "c", t = "t" } do
   local c = vim.cmd
 
   vim.keymap.set("n", "[" .. map, function()
@@ -43,7 +43,7 @@ for map, bind in pairs({ a = "", b = "b", l = "l", q = "c", t = "t" }) do
   end, { silent = true })
 end
 
-for map, bind in pairs({ ["<c-l>"] = "l", ["<c-q>"] = "q" }) do
+for map, bind in pairs { ["<c-l>"] = "l", ["<c-q>"] = "q" } do
   local c = vim.cmd
 
   vim.keymap.set("n", "[" .. map, function()

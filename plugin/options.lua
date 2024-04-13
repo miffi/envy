@@ -1,11 +1,13 @@
 local util = require("util")
 
-util.set_options({
+util.set_options {
   shortmess = vim.o.shortmess .. "I",
 
   -- completion options
   completeopt = "menu,menuone,noselect",
   pumheight = 20,
+
+  undofile = true,
 
   -- make wildmode conversion more like readline
   wildmode = "longest:full,full",
@@ -13,7 +15,7 @@ util.set_options({
   -- search options
   ignorecase = true,
   smartcase = true,
-  incsearch = true,
+  -- incsearch = true, -- true by default
   hlsearch = false,
 
   -- saner split defaults
@@ -36,7 +38,6 @@ util.set_options({
   number = true,
   relativenumber = true,
   signcolumn = "yes",
-  conceallevel = 2,
 
   -- indenting options
   tabstop = 2,
@@ -45,8 +46,10 @@ util.set_options({
   expandtab = true,
   autoindent = true,
   smartindent = true,
+  breakindent = true,
 
   -- aesthetic changes
+  conceallevel = 2,
   title = true,
   titlestring = "%<%f %h%m%r%=%-14.(%l,%c%V%) %P",
   titlelen = 100,
@@ -63,14 +66,14 @@ util.set_options({
   background = "dark",
   -- guicursor = '',
 
-  cmdheight = 1,
+  cmdheight = 0,
   showmode = false,
   ruler = false,
 
   fcs = "eob: ",
-})
+}
 
-util.set_vars({
+util.set_vars {
   -- These variables stop some default plugins for loading plugins concerned with
   -- archives, netrw and matching parentheses. Remove the lines to load the
   -- plugins normally.
@@ -87,15 +90,15 @@ util.set_vars({
 
   -- xbps installs the fzf.vim plugin alongside fzf for some reason
   loaded_fzf = 1,
-})
+}
 
 -- filetypes
-vim.filetype.add({
+vim.filetype.add {
   extension = {
     zig = "zig",
     nasm = "nasm",
   },
-})
+}
 
 local severity = {
   { name = "Error", icon = "✘" },
@@ -105,7 +108,7 @@ local severity = {
   { name = "Ok", icon = "✔" },
 }
 
-vim.diagnostic.config({
+vim.diagnostic.config {
   virtual_text = true,
   underline = true,
   severity_sort = true,
@@ -118,6 +121,17 @@ vim.diagnostic.config({
       return sev["icon"] .. " ", "Diagnostic" .. sev["name"]
     end,
   },
+}
+
+vim.api.nvim_create_autocmd("TextYankPost", {
+  desc = "Highlight when yanking (copying) text",
+  group = vim.api.nvim_create_augroup("highlight-yank", { clear = true }),
+  callback = function()
+    vim.highlight.on_yank {
+      higroup = "StatusLineNC",
+      timeout = 200,
+    }
+  end,
 })
 
 for _, entry in ipairs(severity) do
