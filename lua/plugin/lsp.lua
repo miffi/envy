@@ -97,6 +97,7 @@ return {
       lspconfig.pyright.setup {}
       lspconfig.hls.setup {}
       lspconfig.gleam.setup {}
+      lspconfig.zls.setup {}
     end,
   },
 
