@@ -45,6 +45,7 @@ return {
       end,
       formatters_by_ft = {
         lua = { "stylua" },
+        tex = { "latexindent" },
       },
     },
   },
