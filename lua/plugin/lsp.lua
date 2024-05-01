@@ -82,6 +82,7 @@ return {
           },
         },
       }
+      lspconfig.purescriptls.setup {}
       lspconfig.clangd.setup {
         cmd = { "clangd-16" },
       }
