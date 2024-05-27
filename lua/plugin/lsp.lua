@@ -98,6 +98,7 @@ return {
       lspconfig.hls.setup {}
       lspconfig.gleam.setup {}
       lspconfig.zls.setup {}
+      lspconfig.marksman.setup {}
     end,
   },
 
