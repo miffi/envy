@@ -35,6 +35,29 @@ return {
     opts = { useDefaultKeymaps = true, disabledKeymaps = { "gc" } },
   },
 
+  {
+    "mfussenegger/nvim-lint",
+    lazy = false,
+    config = function()
+      local lint = require("lint")
+      lint.linters_by_ft = {
+        sh = { "shellcheck" },
+        go = { "golangcilint" },
+        js = { "eslint" },
+      }
+
+      lint.linters.shellcheck.args = {
+        "-x",
+      }
+
+      vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+        callback = function()
+          require("lint").try_lint()
+        end,
+      })
+    end,
+  },
+
   { -- Autoformat
     "stevearc/conform.nvim",
     event = { "BufWritePre" },
