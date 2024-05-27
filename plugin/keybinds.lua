@@ -10,8 +10,6 @@ vim.keymap.set("n", "<leader>w", "<Cmd>up<CR>", { silent = true })
 
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { silent = true })
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { silent = true })
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { silent = true })
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { silent = true })
 
 -- Windowing binds made better
