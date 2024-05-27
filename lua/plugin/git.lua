@@ -13,7 +13,6 @@ return {
       "nvim-lua/plenary.nvim",
       "sindrets/diffview.nvim",
     },
-    branch = "nightly",
     cmd = "Neogit",
     opts = {
       graph_style = "unicode",
