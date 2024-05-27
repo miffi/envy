@@ -1,10 +1,3 @@
-vim.g.mapleader = " "
-
--- vim.g.maplocalleader = '-'
---
--- I never really found a good key for localleader, so localleader is <leader>;
-vim.keymap.set("n", "<leader>;", "<localleader>", { remap = true })
-
 --- Leader binds
 vim.keymap.set("n", "<leader>w", "<Cmd>up<CR>", { silent = true })
 
