@@ -27,19 +27,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 return {
   {
-    "kosayoda/nvim-lightbulb",
-    opts = {
-      autocmd = {
-        enabled = true,
-      },
-
-      sign = {
-        text = "C",
-      },
-    },
-  },
-
-  {
     "neovim/nvim-lspconfig",
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
