@@ -51,13 +51,13 @@ util.set_options {
   -- aesthetic changes
   conceallevel = 2,
   title = true,
-  titlestring = "%<%f %h%m%r%=%-14.(%l,%c%V%) %P",
-  titlelen = 100,
+  -- titlestring = "%<%f %h%m%r%=%-14.(%l,%c%V%) %P",
+  -- titlelen = 100,
   fillchars = "eob: ,fold: ",
 
   -- statuslines
   laststatus = 3,
-  statusline = "%#WinSeparator#",
+  -- statusline = "%#WinSeparator#",
   showtabline = 1,
 
   cursorline = true,
@@ -66,9 +66,9 @@ util.set_options {
   background = "dark",
   -- guicursor = '',
 
-  cmdheight = 0,
+  cmdheight = 1,
   showmode = false,
-  ruler = false,
+  ruler = true,
 
   fcs = "eob: ",
 }
