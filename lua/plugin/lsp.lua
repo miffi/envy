@@ -55,7 +55,7 @@ return {
               version = "LuaJIT",
             },
             diagnostics = {
-              globals = { "vim" },
+              globals = { "vim" }, -- Revisit after https://github.com/folke/neodev.nvim/issues/185 is fixed
             },
             workspace = {
               -- Make the server aware of Neovim runtime files
