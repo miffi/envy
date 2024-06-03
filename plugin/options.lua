@@ -117,10 +117,14 @@ vim.diagnostic.config {
     scope = "line",
     header = "",
     source = "if_many",
-    prefix = function(diagnostic, _, _)
-      local sev = severity[diagnostic.severity] or severity[5]
-      return sev["icon"] .. " ", "Diagnostic" .. sev["name"]
-    end,
+  },
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = "✘",
+      [vim.diagnostic.severity.WARN] = "?",
+      [vim.diagnostic.severity.INFO] = "ἰ",
+      [vim.diagnostic.severity.HINT] = "!",
+    },
   },
 }
 
@@ -134,10 +138,3 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     }
   end,
 })
-
-for _, entry in ipairs(severity) do
-  vim.fn.sign_define(
-    "DiagnosticSign" .. entry["name"],
-    { text = entry["icon"], texthl = "Diagnostic" .. entry["name"] }
-  )
-end
