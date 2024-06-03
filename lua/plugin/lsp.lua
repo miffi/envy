@@ -77,7 +77,16 @@ return {
         },
       }
       lspconfig.beancount.setup {}
-      lspconfig.pyright.setup {}
+      lspconfig.pylsp.setup {
+        plugins = {
+          black = {
+            enabled = true,
+          },
+          mypy = {
+            enabled = true,
+          },
+        },
+      }
       lspconfig.hls.setup {}
       lspconfig.gleam.setup {}
       lspconfig.zls.setup {}
