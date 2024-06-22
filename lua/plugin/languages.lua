@@ -1,5 +1,15 @@
 return {
   {
+    "lervag/vimtex",
+    init = function()
+      require("util").set_vars {
+        tex_flavor = "latex",
+        vimtex_view_method = "sioyek",
+      }
+    end,
+  },
+
+  {
     "iamcco/markdown-preview.nvim",
     cmd = {
       "MarkdownPreviewToggle",

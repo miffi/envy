@@ -101,15 +101,4 @@ return {
     "kylechui/nvim-surround",
     config = true,
   },
-
-  {
-    "lervag/vimtex",
-    ft = { "tex", "bib" },
-    init = function()
-      require("util").set_vars {
-        tex_flavor = "latex",
-        vimtex_view_method = "zathura",
-      }
-    end,
-  },
 }
