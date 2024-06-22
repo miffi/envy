@@ -76,7 +76,7 @@ return {
           },
         },
       }
-      lspconfig.beancount.setup {}
+      lspconfig.marksman.setup {}
       lspconfig.pylsp.setup {
         plugins = {
           black = {
@@ -90,7 +90,6 @@ return {
       lspconfig.hls.setup {}
       lspconfig.gleam.setup {}
       lspconfig.zls.setup {}
-      lspconfig.marksman.setup {}
     end,
   },
 
