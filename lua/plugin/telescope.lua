@@ -3,7 +3,7 @@ local layout = {
   selection_caret = "> ",
   entry_prefix = "  ",
 
-  preview = false,
+  preview = true,
 
   border = true,
   borderchars = {
@@ -16,10 +16,6 @@ local layout = {
   prompt_title = false,
 
   sorting_strategy = "ascending",
-
-  layout_config = {
-    height = 10,
-  },
 
   layout_strategy = "bottom_pane",
 }
