@@ -2,6 +2,15 @@ return {
   {
     "mfussenegger/nvim-dap",
 
+    dependencies = {
+      {
+        "mfussenegger/nvim-dap-python",
+        config = function()
+          require("dap-python").setup("/usr/bin/python3")
+        end,
+      },
+    },
+
     config = function()
       local dap = require("dap")
       dap.adapters.lldb = {
@@ -10,14 +19,5 @@ return {
         name = "lldb",
       }
     end,
-  },
-
-  {
-    "rcarriga/nvim-dap-ui",
-    dependencies = {
-      "nvim-neotest/nvim-nio",
-    },
-    main = "dapui",
-    config = true,
   },
 }
