@@ -20,6 +20,19 @@ local layout = {
   layout_strategy = "bottom_pane",
 }
 
+local keys = {
+  {
+    "<leader>vv",
+    function()
+      require("telescope.builtin").find_files {
+        cwd = vim.fn.stdpath("config"),
+        prompt_title = "Edit neovim config",
+      }
+    end,
+    desc = "Edit neovim config",
+  },
+}
+
 return {
   {
     "nvim-telescope/telescope.nvim",
@@ -30,12 +43,14 @@ return {
     opts = {
       defaults = layout,
     },
+    main = "telescope",
     config = function(_, opts)
       local telescope = require("telescope")
       telescope.setup(opts)
 
       telescope.load_extension("fzf")
     end,
+    keys = keys,
   },
 
   {
