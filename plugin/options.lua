@@ -95,7 +95,6 @@ util.set_vars {
 -- filetypes
 vim.filetype.add {
   extension = {
-    zig = "zig",
     nasm = "nasm",
     purs = "purescript",
   },
