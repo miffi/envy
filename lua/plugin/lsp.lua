@@ -89,6 +89,9 @@ return {
       lspconfig.hls.setup {}
       lspconfig.gleam.setup {}
       lspconfig.zls.setup {}
+      lspconfig.elixirls.setup {
+        cmd = { vim.fn.expand("~/opt/elixir-ls/language_server.sh") },
+      }
     end,
   },
 
