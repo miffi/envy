@@ -14,6 +14,11 @@ return {
       require("util").set_vars {
         tex_flavor = "latex",
         vimtex_view_method = "sioyek",
+
+        vimtex_compiler_latexmk = {
+          aux_dir = "cache",
+          out_dir = "build",
+        },
       }
     end,
   },
