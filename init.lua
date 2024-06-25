@@ -5,7 +5,6 @@ vim.loader.enable()
 -- if you have any mappings you set before doing this, they will be set to the old
 -- leader.
 vim.g.mapleader = " "
-
 vim.g.maplocalleader = "<tab>"
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
