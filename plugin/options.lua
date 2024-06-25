@@ -101,14 +101,6 @@ vim.filetype.add {
   },
 }
 
-local severity = {
-  { name = "Error", icon = "✘" },
-  { name = "Warn", icon = "?" },
-  { name = "Info", icon = "ἰ" },
-  { name = "Hint", icon = "!" },
-  { name = "Ok", icon = "✔" },
-}
-
 vim.diagnostic.config {
   virtual_text = true,
   underline = true,
