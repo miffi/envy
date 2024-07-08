@@ -27,6 +27,13 @@ return {
   },
 
   {
+    "j-hui/fidget.nvim",
+    opts = {
+      -- options
+    },
+  },
+
+  {
     "tpope/vim-abolish",
   },
 
