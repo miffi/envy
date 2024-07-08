@@ -47,17 +47,6 @@ return {
       lspconfig.lua_ls.setup {
         settings = {
           Lua = {
-            runtime = {
-              version = "LuaJIT",
-            },
-            diagnostics = {
-              globals = { "vim" }, -- Revisit after https://github.com/folke/neodev.nvim/issues/185 is fixed
-            },
-            workspace = {
-              -- Make the server aware of Neovim runtime files
-              library = vim.api.nvim_get_runtime_file("", true),
-              checkThirdParty = false,
-            },
             telemetry = {
               enable = false,
             },

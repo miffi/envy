@@ -93,7 +93,18 @@ return {
     end,
   },
 
-  { "folke/neodev.nvim", opts = {} },
+  {
+    "folke/lazydev.nvim",
+    dependencies = { "Bilal2453/luvit-meta" },
+    ft = "lua", -- only load on lua files
+    opts = {
+      library = {
+        -- See the configuration section for more details
+        -- Load luvit types when the `vim.uv` word is found
+        { path = "luvit-meta/library", words = { "vim%.uv" } },
+      },
+    },
+  },
 
   {
     "saecki/crates.nvim",
