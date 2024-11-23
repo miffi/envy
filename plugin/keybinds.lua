@@ -7,9 +7,9 @@ vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { silent = true })
 
 -- Windowing binds made better
 for _, i in ipairs { "h", "j", "k", "l" } do
-    vim.keymap.set("n", "<leader>" .. i, "<c-w>" .. i)
-    local up = i:upper()
-    vim.keymap.set("n", "<leader>" .. up, "<c-w>" .. up)
+  vim.keymap.set("n", "<leader>" .. i, "<c-w>" .. i)
+  local up = i:upper()
+  vim.keymap.set("n", "<leader>" .. up, "<c-w>" .. up)
 end
 
 -- I don't like that join moves the cursor.
