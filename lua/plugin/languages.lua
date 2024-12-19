@@ -51,7 +51,7 @@ return {
         else
           -- The liblldb extension is .so for Linux and .dylib for MacOS
           liblldb_path = liblldb_path
-            .. (this_os == "Linux" and ".so" or ".dylib")
+              .. (this_os == "Linux" and ".so" or ".dylib")
         end
 
         local cfg = require("rustaceanvim.config")
@@ -66,13 +66,10 @@ return {
 
   {
     "folke/lazydev.nvim",
-    dependencies = { "Bilal2453/luvit-meta" },
     ft = "lua", -- only load on lua files
     opts = {
       library = {
-        -- See the configuration section for more details
-        -- Load luvit types when the `vim.uv` word is found
-        { path = "luvit-meta/library", words = { "vim%.uv" } },
+        { path = "${3rd}/luv/library", words = { "vim%.uv" } },
       },
     },
   },
@@ -83,5 +80,16 @@ return {
     event = { "BufRead Cargo.toml" },
     dependencies = { "nvim-lua/plenary.nvim" },
     config = true,
+  },
+
+  {
+    "nvim-flutter/flutter-tools.nvim",
+    lazy = false,
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    config = {
+      flutter_path = vim.fn.expand("~/opt/flutter/bin/flutter"),
+    },
   },
 }

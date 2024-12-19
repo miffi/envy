@@ -73,7 +73,10 @@ return {
 
   {
     "chrisgrieser/nvim-various-textobjs",
-    opts = { useDefaultKeymaps = true, disabledKeymaps = { "gc", "r" } },
+    opts = {
+      keymaps = {
+        useDefaults = true, disabledDefaults = { "gc", "r" } },
+    }
   },
 
   {
@@ -145,6 +148,7 @@ return {
       formatters_by_ft = {
         lua = { "stylua" },
         tex = { "latexindent" },
+        cmake = { "cmake_format" },
       },
     },
   },
