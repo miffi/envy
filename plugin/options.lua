@@ -41,9 +41,9 @@ util.set_options {
   signcolumn = "yes",
 
   -- indenting options
-  tabstop = 2,
-  shiftwidth = 2,
-  softtabstop = 2,
+  tabstop = 4,
+  shiftwidth = 4,
+  softtabstop = 4,
   expandtab = true,
   autoindent = true,
   smartindent = true,
