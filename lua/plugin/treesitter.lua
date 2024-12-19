@@ -8,7 +8,7 @@ return {
         event = { "BufReadPost", "BufNewFile" },
         main = "nvim-treesitter.configs",
         opts = {
-            ensure_installed = { "c", "cpp", "rust", "lua", "comment" }, -- 'all' or a list of languages
+            ensure_installed = "all", -- 'all' or a list of languages
             highlight = {
                 enable = true,
                 -- disable = { "latex" },

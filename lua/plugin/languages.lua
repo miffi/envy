@@ -5,11 +5,6 @@ return {
             require("util").set_vars {
                 tex_flavor = "latex",
                 vimtex_view_method = "zathura",
-
-                vimtex_compiler_latexmk = {
-                    aux_dir = "cache",
-                    out_dir = "build",
-                },
             }
         end,
     },
@@ -34,7 +29,7 @@ return {
 
     {
         "mrcjkb/rustaceanvim",
-        version = "^4",
+        version = "^5",
         ft = { "rust" },
         init = function()
             vim.g.rustaceanvim = function()

@@ -17,9 +17,7 @@ return {
                 ["<C-h>"] = { "snippet_backward", "fallback" },
             },
 
-            appearance = {
-                -- use_nvim_cmp_as_default = true,
-            },
+            appearance = {},
 
             sources = {
                 default = { "lsp", "path", "snippets", "buffer" },

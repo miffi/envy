@@ -37,6 +37,7 @@ return {
         build = ":call firenvim#install(0)",
         config = function() end,
     },
+
     {
         "lukas-reineke/indent-blankline.nvim",
         main = "ibl",
@@ -56,20 +57,13 @@ return {
     },
 
     {
-        "windwp/nvim-autopairs",
-        config = true,
-    },
-
-    {
         "j-hui/fidget.nvim",
         opts = {
             -- options
         },
     },
 
-    {
-        "tpope/vim-abolish",
-    },
+    { "tpope/vim-abolish" },
 
     {
         "chrisgrieser/nvim-various-textobjs",
@@ -83,13 +77,9 @@ return {
 
     {
         "stevearc/oil.nvim",
+        ---@module 'oil'
+        ---@type oil.SetupOpts
         opts = {},
-        lazy = false,
-        keys = {
-            "-",
-            "<CMD>Oil<CR>",
-            desc = "Open parent directory",
-        },
     },
 
     {

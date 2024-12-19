@@ -39,7 +39,6 @@ return {
                         },
                     },
                 },
-                purescriptls = {},
                 clangd = {},
                 gopls = {
                     settings = {
@@ -60,13 +59,7 @@ return {
                     },
                 },
                 hls = {},
-                elixirls = {
-                    cmd = {
-                        vim.fn.expand("~/opt/elixir-ls/language_server.sh"),
-                    },
-                },
                 gleam = {},
-                tinymist = {},
             },
         },
         config = function(_, opts)
