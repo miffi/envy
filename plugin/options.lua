@@ -27,6 +27,8 @@ util.set_options {
     scrolloff = 5,
 
     -- textwidth = 72,
+    spell = true,
+    spelllang = "en_us",
 
     -- don't annoy me to save stuff on buffer switch
     hidden = true,
@@ -91,16 +93,12 @@ util.set_vars {
     loaded_netrwPlugin = 1,
     loaded_matchit = 1,
     -- loaded_matchparen = 1,
-
-    -- xbps installs the fzf.vim plugin alongside fzf for some reason
-    loaded_fzf = 1,
 }
 
 -- filetypes
 vim.filetype.add {
     extension = {
         nasm = "nasm",
-        purs = "purescript",
         dj = "djot",
     },
 }
@@ -132,5 +130,14 @@ vim.api.nvim_create_autocmd("TextYankPost", {
             higroup = "StatusLineNC",
             timeout = 200,
         }
+    end,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+    desc = "Text filetype options",
+    pattern = "djot,markdown",
+    group = vim.api.nvim_create_augroup("text-filetype", { clear = true }),
+    callback = function(ev)
+        vim.bo[ev.buf].textwidth = 80
     end,
 })
