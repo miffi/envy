@@ -1,14 +1,14 @@
 return {
-  {
-    "miffi/apropospriate.nvim",
+    {
+        "miffi/apropospriate.nvim",
 
-    dev = true,
-    dir = "~/dev/apropospriate.nvim/",
+        dev = true,
+        dir = "~/dev/apropospriate.nvim/",
 
-    lazy = false,
-    priority = 1000,
-    config = function()
-      vim.cmd.colorscheme("apropospriate")
-    end,
-  },
+        lazy = false,
+        priority = 1000,
+        config = function()
+            vim.cmd.colorscheme("apropospriate")
+        end,
+    },
 }

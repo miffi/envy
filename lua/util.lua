@@ -7,21 +7,21 @@ endfunction
 ]])
 
 function util.set_vars(tbl)
-  for var, value in pairs(tbl) do
-    vim.g[var] = value
-  end
+    for var, value in pairs(tbl) do
+        vim.g[var] = value
+    end
 end
 
 function util.set_options(tbl)
-  for var, value in pairs(tbl) do
-    vim.o[var] = value
-  end
+    for var, value in pairs(tbl) do
+        vim.o[var] = value
+    end
 end
 
 function util.set_local_options(tbl)
-  for var, value in pairs(tbl) do
-    vim.bo[var] = value
-  end
+    for var, value in pairs(tbl) do
+        vim.bo[var] = value
+    end
 end
 
 return util
