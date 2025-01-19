@@ -47,19 +47,12 @@ return {
                         },
                     },
                 },
-                marksman = {},
-                pylsp = {
-                    plugins = {
-                        black = {
-                            enabled = true,
-                        },
-                        mypy = {
-                            enabled = true,
-                        },
-                    },
-                },
+                ruff = {},
+                pyright = {},
                 hls = {},
                 gleam = {},
+                jdtls = {},
+                zls = {},
             },
         },
         config = function(_, opts)

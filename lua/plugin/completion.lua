@@ -20,7 +20,7 @@ return {
             appearance = {},
 
             sources = {
-                default = { "lsp", "path", "snippets", "buffer" },
+                default = { "lsp", "path", "snippets" },
                 -- optionally disable cmdline completions
                 -- cmdline = {},
             },
@@ -29,11 +29,8 @@ return {
                 menu = {
                     draw = {
                         columns = {
-                            { "label", "label_description", gap = 1, "kind" },
+                            { "label", "label_description", gap = 2, "kind" },
                         },
-                    },
-                    components = {
-                        label_description = { width = { fill = true } },
                     },
                 },
             },
