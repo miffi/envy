@@ -4,8 +4,10 @@ return {
         lazy = false,
         dependencies = "rafamadriz/friendly-snippets",
 
-        version = "v0.*",
+        version = "1.*",
 
+        ---@module 'blink.cmp'
+        ---@type blink.cmp.Config
         opts = {
             keymap = {
                 preset = "default",
@@ -21,8 +23,6 @@ return {
 
             sources = {
                 default = { "lsp", "path", "snippets" },
-                -- optionally disable cmdline completions
-                -- cmdline = {},
             },
 
             completion = {

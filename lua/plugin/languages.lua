@@ -10,37 +10,9 @@ return {
     },
 
     {
-        "iamcco/markdown-preview.nvim",
-        cmd = {
-            "MarkdownPreviewToggle",
-            "MarkdownPreview",
-            "MarkdownPreviewStop",
-        },
-        ft = { "markdown" },
-        build = function()
-            vim.fn["mkdp#util#install"]()
-        end,
-        init = function()
-            vim.g.mkdp_auto_close = 0
-            vim.g.mkdp_combine_preview = 1
-            vim.g.mkdp_browserfunc = "OpenMarkdownPreview"
-        end,
-    },
-
-    {
         "mrcjkb/rustaceanvim",
-        version = "^5",
+        version = "^6",
         lazy = false,
-    },
-
-    {
-        "folke/lazydev.nvim",
-        ft = "lua", -- only load on lua files
-        opts = {
-            library = {
-                { path = "${3rd}/luv/library", words = { "vim%.uv" } },
-            },
-        },
     },
 
     {
@@ -57,8 +29,10 @@ return {
         dependencies = {
             "nvim-lua/plenary.nvim",
         },
-        config = {
+        opts = {
             flutter_path = vim.fn.expand("~/opt/flutter/bin/flutter"),
         },
     },
+
+    { "eraserhd/parinfer-rust", build = "cargo build --release" },
 }

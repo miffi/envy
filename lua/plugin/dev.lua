@@ -22,23 +22,6 @@ end, {
 
 return {
     {
-        "glacambre/firenvim",
-        init = function()
-            vim.g.firenvim_config = {
-                globalSettings = { alt = "all" },
-                localSettings = {
-                    [".*"] = {
-                        cmdline = "firenvim",
-                        takeover = "never",
-                    },
-                },
-            }
-        end,
-        build = ":call firenvim#install(0)",
-        config = function() end,
-    },
-
-    {
         "lukas-reineke/indent-blankline.nvim",
         main = "ibl",
         config = function()
@@ -58,9 +41,7 @@ return {
 
     {
         "j-hui/fidget.nvim",
-        opts = {
-            -- options
-        },
+        opts = {},
     },
 
     { "tpope/vim-abolish" },
@@ -141,7 +122,6 @@ return {
             end,
             formatters_by_ft = {
                 lua = { "stylua" },
-                tex = { "latexindent" },
                 cmake = { "cmake_format" },
             },
         },

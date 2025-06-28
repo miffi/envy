@@ -1,19 +1,10 @@
 return {
     {
-        "miffi/apropospriate.nvim",
-        lazy = false,
+        "catppuccin/nvim",
+        name = "catppuccin",
         priority = 1000,
         config = function()
-            vim.cmd.colorscheme("apropospriate")
+            vim.cmd.colorscheme("catppuccin")
         end,
     },
-
-    {
-        "folke/tokyonight.nvim",
-        lazy = false,
-        priority = 1000,
-        opts = {},
-    },
-
-    { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
 }

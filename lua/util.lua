@@ -1,11 +1,5 @@
 local util = {}
 
-vim.cmd([[
-function OpenMarkdownPreview (url)
-  execute "silent ! firefox --new-window " . a:url
-endfunction
-]])
-
 function util.set_vars(tbl)
     for var, value in pairs(tbl) do
         vim.g[var] = value

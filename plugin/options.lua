@@ -27,7 +27,7 @@ util.set_options {
     scrolloff = 5,
 
     -- textwidth = 72,
-    spell = true,
+    -- spell = true,
     spelllang = "en_us",
 
     -- don't annoy me to save stuff on buffer switch
@@ -69,7 +69,7 @@ util.set_options {
     background = "dark",
     -- guicursor = '',
 
-    -- cmdheight = 1,
+    cmdheight = 0,
     showmode = false,
     ruler = true,
 
