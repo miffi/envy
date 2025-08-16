@@ -17,6 +17,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
             vim.lsp.buf.remove_workspace_folder,
             opts
         )
+        vim.keymap.set(
+            "n",
+            "gW",
+            require("telescope.builtin").lsp_dynamic_workspace_symbols
+        )
         vim.keymap.set("n", "<space>dl", function()
             print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
         end, opts)

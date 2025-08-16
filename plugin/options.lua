@@ -38,7 +38,7 @@ util.set_options {
     mouse = "",
 
     -- number options
-    number = true,
+    number = false,
     relativenumber = true,
     signcolumn = "yes",
 
