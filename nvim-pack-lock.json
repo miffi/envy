@@ -1,0 +1,29 @@
+{
+  "plugins": {
+    "blink.cmp": {
+      "rev": "e116ff9c5c1c2ed6bcdb2e0a6e547099876a8116",
+      "src": "https://github.com/saghen/blink.cmp"
+    },
+    "blink.lib": {
+      "rev": "c8fdc12c8a2fab6cf786dd7141a283f8079f902b",
+      "src": "https://github.com/saghen/blink.lib"
+    },
+    "nvim-lspconfig": {
+      "rev": "0662886bc0a4e0c199dec65cee23a4319dd79f55",
+      "src": "https://github.com/neovim/nvim-lspconfig"
+    },
+    "parinfer-rust": {
+      "rev": "0d334950099cd30a8e1ca520026f8da9ea1382fa",
+      "src": "https://github.com/eraserhd/parinfer-rust"
+    },
+    "typst-preview.nvim": {
+      "rev": "1c2e19486397be1c580b560fc50ee36abe329c46",
+      "src": "https://github.com/chomosuke/typst-preview.nvim",
+      "version": "1.0.0 - 2.0.0"
+    },
+    "zenbones.nvim": {
+      "rev": "8304d8df9b823ff11e103afa62f38c39f534abe6",
+      "src": "https://github.com/zenbones-theme/zenbones.nvim"
+    }
+  }
+}
